@@ -1,4 +1,4 @@
-# Zeta 4 Drive
+# Zeta4 Drive & Arduino
 
 Getting an Arduino UNO to talk to a Parker Zeta4 drive
 
@@ -6,109 +6,87 @@ Getting an Arduino UNO to talk to a Parker Zeta4 drive
 Wire the 25 Pin D Connector according to the following drawing:
 ![25_pin_D_connector_functions.png](docs/25_pin_D_connector_functions.png)
 
-
+## Pin Descriptions
 ### Step
-Type: Input  
-Pins: STEP+ & STEP-  
-Step: Voltage Applied (step occurs on rising edge)
+**Type:** Input  
+**Pins:** STEP+ (pin 1) & STEP- (pin 14)  
+**Step:** Voltage Applied (step occurs on rising edge)
 
-Input Current | Current (mA)
---------------|-------------------------------------------
-Minimum       | 6.5 mA
-Maximum       | 15 mA
+**Step Pulse:** 
+*  200 nanosecond minimum pulse width  
+* 200 nanosecond minimum off time  
+* 2 MHz maximum pulse rate  
+
+&nbsp;          | Input Current (mA)  |   Input Voltage (VDC)
+----------------|---------------------|--------------------------
+Minimum         | 6.5 mA              | 3.5 V (min. required for on or high signal)
+Maximum         | 15 mA               | 5.2 V
 <br/>
 
-Input Voltage | Voltage (VDC)
---------------|-------------------------------------------
-Minimum       | 3.5 V (min. required for on or high signal)
-Maximum       | 5.2 V
-<br/>
-
-Step Pulse: 200 nanosecond minimum pulse width  
-200 nanosecond minimum off time  
-2 MHz maximum pulse rate  
-<br/>
 
 ### Direction
-Type: Input  
-Pins: DIR+ & DIR-  
-CCW: 0V or negative voltage between DIR+ & DIR-  
-CW: Positive voltage between DIR+ & DIR-  
+**Type:** Input  
+**Pins:** DIR+ (pin 2) & DIR- (pin 15)  
+**CCW:** 0V or negative voltage between DIR+ & DIR-  
+**CW:** Positive voltage between DIR+ & DIR-  
 
-Input Current | Current (mA)
---------------|-------------------------------------------
-Minimum       | 6.5 mA
-Maximum       | 15 mA
-<br/>
-
-Input Voltage | Voltage (VDC)
---------------|-------------------------------------------
-Minimum       | 3.5 V (min. required for on or high signal)
-Maximum       | 5.2 V
+&nbsp;          | Input Current (mA)  |   Input Voltage (VDC)
+----------------|---------------------|--------------------------
+Minimum         | 6.5 mA              | 3.5 V (min. required for on or high signal)
+Maximum         | 15 mA               | 5.2 V
 <br/>
 
 
 ### Clockwise & Counterclockwise
-Type: Input  
-Pins: CCW+ & CW-  
+**Type:** Input  
+**Pins:** CCW+ & CW-  
 
 Pin # | SW1-#12 OFF     | SW1-#12 ON
 ------|-----------------|---------------------------------
-1     | STEP+           | CW+
-14    | STEP-           | CW-
-2     | DIR+            | CCW+
-15    | DIR-            | CCW-
+1     | STEP+           | CW+ (pin 1)
+14    | STEP-           | CW- (pin 14)
+2     | DIR+            | CCW+ (pin 2)
+15    | DIR-            | CCW- (pin 15)
 <br/>
+
 
 ### Shutdown
-Type: Input  
-Pins: SD+ & SD-  
-Shutdown: Voltage Applied  
-Normal Operation: Voltage Removed  
+**Type:** Input  
+**Pins:** SD+ (pin 16) & SD- (pin 17)  
+**Shutdown:** Voltage Applied  
+**Normal Operation:** Voltage Removed  
 
-Input Current | Current (mA)
---------------|-------------------------------------------
-Minimum       | 2.5 mA
-Maximum       | 30 mA
-<br/>
-
-Input Voltage   | Voltage (VDC)
-----------------|-------------------------------------------
-Minimum         | 3.5 V (min. required for on or high signal)
-Maximum         | 13 V
-Maximum Reverse | 5 V
+&nbsp;          | Input Current (mA)  |   Input Voltage (VDC)
+----------------|---------------------|--------------------------
+Minimum         | 2.5 mA              | 3.5 V (min. required for on or high signal)
+Maximum         | 30 mA               | 13 V
+Maximum Reverse |                     | 5 V
 <br/>
 
 
 ### Reset
-Type: Input  
-Pins: RESET+ & RESET-  
-Reset: Voltage Applied  
-Normal Operation: Voltage Removed
+**Type:** Input  
+**Pins:** RESET+ (pin 11) & RESET- (pin 23)  
+**Reset:** Voltage Applied  
+**Normal Operation:** Voltage Removed
+**Reset Voltage Pulse:** 250 nanosecond minimum pulse width  
 
-Input Current | Current (mA)
---------------|-------------------------------------------
-Minimum       | 2.5 mA
-Maximum       | 30 mA
+&nbsp;          | Input Current (mA)  |   Input Voltage (VDC)
+----------------|---------------------|--------------------------
+Minimum         | 2.5 mA              | 3.5 V (min. required for on or high signal)
+Maximum         | 30 mA               | 13 V
+Maximum Reverse |                     | 5 V
 <br/>
 
-Input Voltage   | Voltage (VDC)
-----------------|-------------------------------------------
-Minimum         | 3.5 V (min. required for on or high signal)
-Maximum         | 13 V
-Maximum Reverse | 5 V
-<br/>
-
-Reset Voltage Pulse: 250 nanosecond minimum pulse width  
 
 ### Fault Output
-Type: Output  
-Pins: FLT C & FLT E  
+**Type:** Output  
+**Pins:** FLT C (pin 9) & FLT E (pin 21)  
 
-VCE: 30 VDC  
-VCESAT: 1 VDC  
-Collector Current: 40 mA minimum  
-Dissipation: 40 mW maximum  
+**VCE:** 30 VDC  
+**VCESAT:** 1 VDC  
+**Collector Current:** 40 mA minimum  
+**Dissipation:** 40 mW maximum  
 <br/>
 
 
